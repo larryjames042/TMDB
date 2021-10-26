@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".ui.moviedetail.MovieDetailActivity">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.codigo.tmdb.viewmodel.MovieDetailViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:transitionName="@string/share_image_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImageFromUrl="@{movie.movie.moviePosterUrl}"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                tools:text="TextView"
+                android:text="@{movie.movie.movieTitle}"
+                style="@style/MovieTitleStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/img_movie"
+                app:layout_constraintTop_toTopOf="@+id/img_movie" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_overview_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="OverView"
+                style="@style/MovieTitleStyle"
+                app:layout_constraintStart_toStartOf="@+id/img_movie"
+                app:layout_constraintTop_toBottomOf="@+id/img_movie" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_overview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{movie.movie.movieOverview}"
+                app:layout_constraintEnd_toEndOf="@+id/txt_title"
+                app:layout_constraintStart_toStartOf="@+id/txt_overview_label"
+                app:layout_constraintTop_toBottomOf="@+id/txt_overview_label"
+                tools:text="Overview" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:onClick="@{()-> movie.onFavouriteButtonClick()}"
+                app:layout_constraintStart_toStartOf="@+id/txt_overview"
+                app:layout_constraintTop_toBottomOf="@+id/txt_overview" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

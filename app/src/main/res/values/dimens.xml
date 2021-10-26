@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="screen_border_padding">12dp</dimen>
+    <dimen name="movie_card_padding">8dp</dimen>
+
+</resources>
